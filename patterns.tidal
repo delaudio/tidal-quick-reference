@@ -1,0 +1,45 @@
+-- set midichannel in ableton at 1
+-- examples work with drum rack
+
+-- pattern grouping
+do
+    d1 $ stack [
+      n "[c3] [ds3 as3]" # s "midi" # midichan 0]
+
+-- pattern grouping alt syntax
+do
+    d1 $ stack [
+      n "c3 . ds3 as3" # s "midi" # midichan 0]
+
+-- layering (polyrithms) -> play at the same time
+do
+    d2 $ stack [
+      n "[c3, ds3]" # s "midi" # midichan 0]
+
+-- play one step per cycle
+do
+    d1 $ stack [
+      n "[c3] <[ds3*2] [ds3]>" # s "midi" # midichan 0]
+
+-- reverse a pattern with rev and every to hear differences
+do
+    d1 $ stack [
+      every 2 rev(n "[c3 c3 d3 ds3]" # s "midi" # midichan 0)]
+
+-- slow down a pattern 4 times
+do
+    d1 $ stack [
+      slow 2 $ n "[c3]" # s "midi" # midichan 0]
+
+-- speed up a pattern 2 times
+do
+    d1 $ stack [
+      fast 2 $ n "[c3]" # s "midi" # midichan 0]
+
+-- speed up a pattern 2 times every 4
+do
+    d1 $ stack [
+      (every 4 (fast 4) $ n "[c3] a3" # s "midi" # midichan 0)]
+
+hush
+
